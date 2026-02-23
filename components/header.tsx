@@ -25,9 +25,9 @@ export function Header({ onOpenModal }: HeaderProps) {
       <nav
         className={`flex w-full max-w-5xl items-center justify-between rounded-full px-5 py-2.5 transition-all duration-500 ${
           scrolled
-            ? "bg-white/[0.07] shadow-[0_8px_32px_rgba(0,0,0,0.6)]"
-            : "bg-white/[0.04] shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
-        } border border-white/[0.08] backdrop-blur-xl`}
+            ? "border-white/[0.14] bg-black/45 shadow-[0_12px_40px_rgba(0,0,0,0.65)] backdrop-blur-2xl"
+            : "border-white/[0.08] bg-white/[0.04] shadow-[0_8px_32px_rgba(0,0,0,0.3)] backdrop-blur-xl"
+        }`}
       >
         {/* Logo */}
         <span className="text-lg font-bold tracking-tight text-white">
@@ -45,9 +45,10 @@ export function Header({ onOpenModal }: HeaderProps) {
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full px-3.5 py-1.5 text-sm text-white/60 transition-colors hover:text-white hover:bg-white/[0.06]"
+              className="group relative rounded-full px-3.5 py-1.5 text-sm text-white/60 transition-colors hover:text-white"
             >
               {link.label}
+              <span className="pointer-events-none absolute inset-x-3.5 bottom-0 h-px scale-x-0 bg-blue-400/80 shadow-[0_0_10px_rgba(59,130,246,0.7)] transition-transform duration-300 group-hover:scale-x-100" />
             </a>
           ))}
         </div>
@@ -63,7 +64,7 @@ export function Header({ onOpenModal }: HeaderProps) {
           </Button>
           <Button
             onClick={onOpenModal}
-            className="rounded-full bg-white px-5 text-sm font-semibold text-black hover:bg-white/90"
+            className="rounded-full bg-white px-5 text-sm font-semibold text-black shadow-[0_0_24px_rgba(59,130,246,0.28)] hover:bg-white/90"
           >
             Diagnostico Gratis
           </Button>

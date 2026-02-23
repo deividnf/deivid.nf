@@ -48,12 +48,22 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
         }}
       />
 
+      {/* ── Ultra subtle texture ── */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.035]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(45deg, rgba(255,255,255,0.22) 0px, rgba(255,255,255,0.22) 1px, transparent 1px, transparent 3px)",
+          backgroundSize: "4px 4px",
+        }}
+      />
+
       {/* ── Content ── */}
-      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 pb-20 pt-36 md:grid-cols-2 md:gap-16 md:pb-28 md:pt-44 lg:gap-20">
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-6 pb-24 pt-36 md:grid-cols-2 md:gap-20 md:pb-32 md:pt-44 lg:gap-24">
         {/* ── Left Column: Copy & CTAs ── */}
-        <div className="flex flex-col items-start text-left">
+        <div className="relative flex flex-col items-start text-left">
           {/* Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.05] px-4 py-1.5 backdrop-blur-sm">
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.05] px-4 py-1.5 backdrop-blur-sm">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
@@ -63,30 +73,29 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
             </span>
           </div>
 
+          {/* Headline glow */}
+          <div className="pointer-events-none absolute -left-10 top-16 h-64 w-64 rounded-full bg-blue-500/25 blur-[120px]" />
+
           {/* Headline */}
           <h1
-            className="text-balance text-4xl font-bold leading-[1.08] text-white sm:text-5xl lg:text-[3.5rem]"
+            className="relative z-10 text-balance text-4xl font-extrabold leading-[1.08] text-white sm:text-5xl lg:text-[3.8rem]"
             style={{ letterSpacing: "-0.03em" }}
           >
-            Seus dados trabalhando{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-              por voce
-            </span>
-            , nao contra voce.
+            Clareza operacional para decisoes que movem o seu negocio.
           </h1>
 
           {/* Sub-headline */}
-          <p className="mt-5 max-w-lg text-pretty text-base leading-relaxed text-white/50 sm:text-lg">
-            Organizo, automatizo e transformo dados espalhados em dashboards e
-            processos que geram clareza e agilidade para o seu negocio.
+          <p className="mt-7 max-w-[560px] text-pretty text-base leading-relaxed text-white/55 sm:text-lg">
+            Dados, automacao e IA alinhados para decisao executiva com ritmo e
+            controle.
           </p>
 
           {/* CTAs */}
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Button
               onClick={onOpenModal}
               size="lg"
-              className="rounded-full bg-white px-7 py-6 text-sm font-semibold text-black shadow-[0_0_40px_rgba(255,255,255,0.08)] hover:bg-white/90"
+              className="rounded-full bg-white px-8 py-6 text-sm font-semibold text-black shadow-[0_0_0_1px_rgba(255,255,255,0.8),0_0_32px_rgba(59,130,246,0.34)] hover:bg-white/95"
             >
               Solicitar Diagnostico Gratis
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -118,18 +127,20 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
         <div className="relative flex items-center justify-center md:justify-end">
           <div className="grid w-full max-w-md grid-cols-2 gap-3">
             {/* Card 1 - Large, spanning full width */}
-            <div className="col-span-2 rounded-3xl border border-white/[0.08] bg-white/[0.04] p-6 backdrop-blur-2xl">
+            <div className="col-span-2 rounded-3xl border border-white/[0.14] bg-[#0B101A]/95 p-6 shadow-[0_12px_50px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs font-medium uppercase tracking-wider text-white/40">
-                    Eficiencia Operacional
+                    Direcao Operacional
                   </p>
-                  <p className="mt-2 text-4xl font-bold text-white">+98%</p>
-                  <p className="mt-1 text-sm text-white/45">
-                    de precisao nos relatorios
+                  <p className="mt-2 text-2xl font-semibold text-white">
+                    Visao unica para lideranca
+                  </p>
+                  <p className="mt-2 text-sm text-white/55">
+                    Indicadores claros para orientar prioridade, risco e ritmo.
                   </p>
                 </div>
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.08] bg-white/[0.05]">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.12] bg-white/[0.06]">
                   <BarChart3 className="h-7 w-7 text-blue-400" />
                 </div>
               </div>
@@ -148,44 +159,44 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
             </div>
 
             {/* Card 2 - Bottom left */}
-            <div className="rounded-3xl border border-white/[0.08] bg-white/[0.04] p-5 backdrop-blur-2xl">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.05]">
+            <div className="rounded-3xl border border-white/[0.14] bg-[#0B101A]/95 p-5 shadow-[0_12px_50px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.12] bg-white/[0.06]">
                 <Zap className="h-5 w-5 text-indigo-400" />
               </div>
-              <p className="mt-4 text-2xl font-bold text-white">3x</p>
+              <p className="mt-4 text-xl font-semibold text-white">Execucao sem friccao</p>
               <p className="text-xs font-medium uppercase tracking-wider text-white/40">
-                Mais rapido
+                Operacao mais leve
               </p>
               <p className="mt-2 text-xs text-white/35 leading-relaxed">
-                Automacao de processos manuais repetitivos
+                Automacoes reduzem retrabalho e protegem o foco do time.
               </p>
             </div>
 
             {/* Card 3 - Bottom right */}
-            <div className="rounded-3xl border border-white/[0.08] bg-white/[0.04] p-5 backdrop-blur-2xl">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.05]">
+            <div className="rounded-3xl border border-white/[0.14] bg-[#0B101A]/95 p-5 shadow-[0_12px_50px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.12] bg-white/[0.06]">
                 <TrendingUp className="h-5 w-5 text-emerald-400" />
               </div>
-              <p className="mt-4 text-2xl font-bold text-white">40h</p>
+              <p className="mt-4 text-xl font-semibold text-white">Decisao com contexto</p>
               <p className="text-xs font-medium uppercase tracking-wider text-white/40">
-                Economizadas/mes
+                Leitura de negocio
               </p>
               <p className="mt-2 text-xs text-white/35 leading-relaxed">
-                Tempo recuperado com automacoes inteligentes
+                Inteligencia aplicada para agir com confianca e previsibilidade.
               </p>
             </div>
 
             {/* Card 4 - Small pill card overlay at bottom */}
-            <div className="col-span-2 flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.04] px-5 py-3.5 backdrop-blur-2xl">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.05]">
+            <div className="col-span-2 flex items-center gap-3 rounded-2xl border border-white/[0.14] bg-[#0B101A]/95 px-5 py-3.5 shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.12] bg-white/[0.06]">
                 <Clock className="h-4 w-4 text-amber-400" />
               </div>
               <div>
                 <p className="text-sm font-medium text-white">
-                  Entrega media: 5 dias uteis
+                  Evolucao continua orientada por dados
                 </p>
                 <p className="text-xs text-white/40">
-                  Do diagnostico ao dashboard funcionando
+                  Ajustes estrategicos e incrementais para ganho sustentavel.
                 </p>
               </div>
             </div>
