@@ -99,7 +99,7 @@
   overflow: hidden;
   isolation: isolate;
   -webkit-tap-highlight-color: transparent;
-  color: #314158;
+  color: inherit;
   transition: color 0.3s ease !important;
 }
 
@@ -112,10 +112,25 @@
   width: 0%;
   border-radius: inherit;
   background: var(--foreground);
-  transition: width 1200ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transform: translateY(14%);
   z-index: 0;
   opacity: 1;
   mix-blend-mode: normal;
+}
+
+@keyframes btnSweepRiseRight {
+  0% {
+    width: 0%;
+    transform: translateY(14%);
+  }
+  24% {
+    width: 16%;
+    transform: translateY(0%);
+  }
+  100% {
+    width: 100%;
+    transform: translateY(0%);
+  }
 }
 
 .btn-sweep > * {
@@ -126,14 +141,23 @@
   transition: color 0.3s ease !important;
 }
 
+.btn-sweep-content {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  color: inherit;
+  opacity: 1;
+  transition: color 0.3s ease !important;
+}
+
 .btn-sweep:hover,
 .btn-sweep:focus-visible {
-  color: #FFFFFF !important;
+  color: var(--background) !important;
 }
 
 .btn-sweep:hover::before,
 .btn-sweep:focus-visible::before {
-  width: 100% !important;
+  animation: btnSweepRiseRight 1200ms cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
 }
 
 .btn-sweep:hover svg,
@@ -145,7 +169,7 @@
 .btn-sweep:is(:hover, :focus-visible, :active) *,
 .btn-sweep:is(:hover, :focus-visible, :active) svg,
 .btn-sweep:is(:hover, :focus-visible, :active) svg * {
-  color: #FFFFFF !important;
+  color: var(--background) !important;
   opacity: 1 !important;
   fill: currentColor !important;
   stroke: currentColor !important;
@@ -153,10 +177,10 @@
 
 @media (hover: none) {
   .btn-sweep:active {
-    color: #FFFFFF !important;
+    color: var(--background) !important;
   }
   .btn-sweep:active::before {
-    width: 100% !important;
+    animation: btnSweepRiseRight 1200ms cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
   }
 
   .btn-sweep:active svg {
@@ -194,20 +218,20 @@
 }
 
 :where(button, [data-slot='button'], [data-slot='accordion-trigger']).btn-sweep::before {
-  transition: width 1200ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transition: none !important;
 }
 
 :where(button, [data-slot='button'], [data-slot='accordion-trigger']).btn-sweep:hover,
 :where(button, [data-slot='button'], [data-slot='accordion-trigger']).btn-sweep:focus-visible,
 :where(button, [data-slot='button'], [data-slot='accordion-trigger']).btn-sweep:active {
-  color: #FFFFFF !important;
+  color: var(--background) !important;
 }
 
 :where(button, [data-slot='button'], [data-slot='accordion-trigger']).btn-sweep:is(:hover, :focus-visible, :active),
 :where(button, [data-slot='button'], [data-slot='accordion-trigger']).btn-sweep:is(:hover, :focus-visible, :active) *,
 :where(button, [data-slot='button'], [data-slot='accordion-trigger']).btn-sweep:is(:hover, :focus-visible, :active) svg,
 :where(button, [data-slot='button'], [data-slot='accordion-trigger']).btn-sweep:is(:hover, :focus-visible, :active) svg * {
-  color: #FFFFFF !important;
+  color: var(--background) !important;
   opacity: 1 !important;
   fill: currentColor !important;
   stroke: currentColor !important;
@@ -216,7 +240,7 @@
 :where(button, [data-slot='button'], [data-slot='accordion-trigger']).btn-sweep:hover::before,
 :where(button, [data-slot='button'], [data-slot='accordion-trigger']).btn-sweep:focus-visible::before,
 :where(button, [data-slot='button'], [data-slot='accordion-trigger']).btn-sweep:active::before {
-  width: 100% !important;
+  animation: btnSweepRiseRight 1200ms cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
 }
 
 @keyframes heroFloat {

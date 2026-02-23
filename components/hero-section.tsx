@@ -114,10 +114,13 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
             <Button
               onClick={onOpenModal}
               size="lg"
-              className="rounded-full border border-slate-500 bg-blue-600 px-8 py-6 text-sm font-semibold text-white"
+              variant="sweep"
+              className="rounded-full border border-blue-700 bg-blue-500 px-8 py-6 text-sm font-semibold text-blue-50"
             >
-              Solicitar Diagnóstico Grátis
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <span className="btn-sweep-content inline-flex items-center">
+                Solicitar Diagnóstico Grátis
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </span>
             </Button>
             <Button
               asChild
@@ -126,7 +129,7 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
               className="rounded-full border border-slate-400 bg-white px-7 py-6 text-sm"
             >
               <a href={specialistMailto} aria-label="Falar com Especialista por e-mail">
-                Falar com Especialista
+                <span className="btn-sweep-content">Falar com Especialista</span>
               </a>
             </Button>
           </div>
