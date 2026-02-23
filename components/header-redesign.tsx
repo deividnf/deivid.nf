@@ -25,8 +25,8 @@ export function HeaderRedesign({ onOpenModal }: HeaderRedesignProps) {
       <nav
         className={`flex w-full max-w-6xl items-center justify-between rounded-2xl px-6 py-3 transition-all duration-500 ${
           scrolled
-            ? "border border-neutral-200 bg-white/92 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-md"
-            : "border border-neutral-100 bg-white/50 shadow-[0_4px_16px_rgba(0,0,0,0.04)] backdrop-blur-sm"
+            ? "border border-neutral-200 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-md"
+            : "border border-neutral-100 shadow-[0_4px_16px_rgba(0,0,0,0.04)] backdrop-blur-sm"
         }`}
       >
         {/* Logo */}
@@ -65,9 +65,9 @@ export function HeaderRedesign({ onOpenModal }: HeaderRedesignProps) {
             </div>
 
             {/* CTA */}
-            <span className="ml-1 flex-shrink-0 text-xs font-medium text-blue-600">
-              Contato…
-            </span>
+            <button className="ml-2 flex-shrink-0 rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold text-white hover:bg-blue-700 transition-colors">
+              Contato<span className="typing-dots ml-1">.</span><span className="typing-dots" style={{ animationDelay: '0.2s' }}>.</span><span className="typing-dots" style={{ animationDelay: '0.4s' }}>.</span>
+            </button>
           </button>
         </div>
 

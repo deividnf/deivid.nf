@@ -92,30 +92,6 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-6 pb-24 pt-36 md:grid-cols-2 md:gap-20 md:pb-32 md:pt-44 lg:gap-24">
         {/* ── Left Column: Copy & CTAs ── */}
         <div className="relative flex flex-col items-start text-left">
-          {/* Badge */}
-          <div className="hero-status-card group mb-8 inline-flex w-full max-w-[360px] items-center gap-3.5 rounded-full border border-slate-200/60 bg-white/80 px-5 py-2 backdrop-blur-md sm:w-auto sm:max-w-none shadow-sm">
-            <div className="relative h-10 w-10 shrink-0 overflow-visible rounded-full border border-blue-200/40 shadow-[0_0_12px_rgba(59,130,246,0.12)]">
-              <Image
-                src={siteConfig.hero.avatarPath}
-                alt={siteConfig.hero.avatarAlt}
-                width={40}
-                height={40}
-                className="h-full w-full rounded-full object-cover"
-                priority
-              />
-              <span className="absolute -bottom-[1px] -right-[1px] h-2.5 w-2.5 rounded-full border border-white bg-emerald-400 shadow-[0_0_0_1px_rgba(248,249,251,0.8)]" />
-            </div>
-
-            <div className="min-w-0">
-              <p className="truncate text-sm font-semibold leading-[1.1] text-slate-900">
-                Deivid NF
-              </p>
-              <p className="truncate text-xs leading-[1.15] text-slate-600">
-                Disponível para novos projetos
-              </p>
-            </div>
-          </div>
-
           {/* Headline glow */}
           <div className="pointer-events-none absolute -left-10 top-16 h-64 w-64 rounded-full bg-blue-400/12 blur-[120px]" />
 

@@ -162,6 +162,15 @@
   }
 }
 
+@keyframes typingDots {
+  0%, 20% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
 .hero-premium-bg {
   isolation: isolate;
 }
@@ -360,12 +369,18 @@
   animation: heroChartScan 8s ease-in-out infinite;
 }
 
+.typing-dots {
+  display: inline-block;
+  animation: typingDots 1.4s infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-grid,
   .hero-ambient-blob,
   .hero-particle,
   .hero-chart-scan,
-  .hero-chart-bar-visible {
+  .hero-chart-bar-visible,
+  .typing-dots {
     animation: none !important;
   }
 
