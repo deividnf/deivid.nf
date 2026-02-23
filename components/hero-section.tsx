@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
+import { siteConfig, specialistMailto } from "@/lib/site-config"
 import { ArrowRight, Zap, BarChart3, TrendingUp, Clock, CheckCircle2 } from "lucide-react"
 
 interface HeroSectionProps {
@@ -96,25 +97,27 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
         {/* ── Left Column: Copy & CTAs ── */}
         <div className="relative flex flex-col items-start text-left">
           {/* Badge */}
-          <div className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-white/[0.12] bg-white/[0.06] px-3.5 py-1.5 backdrop-blur-sm">
-            <div className="h-5 w-5 overflow-hidden rounded-full border border-blue-400/50 shadow-[0_0_14px_rgba(59,130,246,0.3)]">
+          <div className="hero-status-card group mb-8 inline-flex w-full max-w-[360px] items-center gap-3.5 rounded-full border border-white/[0.14] bg-[#0D1422]/78 px-5 py-2 backdrop-blur-md sm:w-auto sm:max-w-none">
+            <div className="relative h-10 w-10 shrink-0 overflow-visible rounded-full border border-blue-300/45 shadow-[0_0_14px_rgba(59,130,246,0.18)]">
               <Image
-                src="/placeholder-user.jpg"
-                alt="Avatar D.NF"
-                width={20}
-                height={20}
-                className="h-full w-full object-cover"
+                src={siteConfig.hero.avatarPath}
+                alt={siteConfig.hero.avatarAlt}
+                width={40}
+                height={40}
+                className="h-full w-full rounded-full object-cover"
                 priority
               />
+              <span className="absolute -bottom-[1px] -right-[1px] h-2.5 w-2.5 rounded-full border border-[#E6EDF7] bg-emerald-400 shadow-[0_0_0_1px_rgba(5,7,11,0.6)]" />
             </div>
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-            </span>
-            <span className="text-xs font-medium text-white/80">
-              Disponível para novos projetos
-            </span>
-            <span aria-hidden="true" className="hero-caret text-xs text-blue-300">|</span>
+
+            <div className="min-w-0">
+              <p className="truncate text-sm font-semibold leading-[1.1] text-white">
+                Deivid NF
+              </p>
+              <p className="truncate text-xs leading-[1.15] text-white/70">
+                Disponível para novos projetos
+              </p>
+            </div>
           </div>
 
           {/* Headline glow */}
@@ -145,7 +148,7 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button asChild size="lg" variant="ghost" className="hero-liquid-btn hero-liquid-btn-ghost rounded-full border border-white/[0.2] px-7 py-6 text-sm text-white">
-              <a href="mailto:comercial@deividnf.com.br?subject=Contato%20-%20D.NF&body=Ol%C3%A1%2C%20quero%20falar%20sobre%20diagn%C3%B3stico%20e%20estrutura%C3%A7%C3%A3o%20de%20dados." aria-label="Falar com Especialista por e-mail">
+              <a href={specialistMailto} aria-label="Falar com Especialista por e-mail">
                 Falar com Especialista
               </a>
             </Button>
