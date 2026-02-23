@@ -1,5 +1,7 @@
 "use client"
 
+import Image from "next/image"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Zap, BarChart3, TrendingUp, Clock, CheckCircle2 } from "lucide-react"
 
@@ -7,22 +9,49 @@ interface HeroSectionProps {
   onOpenModal: () => void
 }
 
+const chartBars = [40, 55, 35, 70, 50, 80, 65, 90, 75, 95, 85, 98]
+
 export function HeroSection({ onOpenModal }: HeroSectionProps) {
+  const chartRef = useRef<HTMLDivElement | null>(null)
+  const [isChartVisible, setIsChartVisible] = useState(false)
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
+    if (reducedMotion.matches) {
+      setIsChartVisible(true)
+      return
+    }
+
+    const currentChart = chartRef.current
+    if (!currentChart) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsChartVisible(entry.isIntersecting)
+      },
+      { threshold: 0.45 }
+    )
+
+    observer.observe(currentChart)
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#050508]">
+    <section className="hero-premium-bg relative min-h-screen overflow-hidden bg-[#05070B]">
       {/* ── Aurora Mesh Background ── */}
       <div className="pointer-events-none absolute inset-0">
         {/* Primary indigo orb - top left */}
         <div
-          className="absolute -left-32 -top-32 h-[600px] w-[600px] rounded-full opacity-20"
+          className="hero-ambient-blob absolute -left-32 -top-32 h-[600px] w-[600px] rounded-full opacity-25"
           style={{
-            background: "radial-gradient(circle, #3b4fd8 0%, transparent 70%)",
+            background: "radial-gradient(circle, #1D4ED8 0%, transparent 72%)",
             filter: "blur(140px)",
           }}
         />
         {/* Secondary purple orb - right center */}
         <div
-          className="absolute -right-20 top-1/3 h-[500px] w-[500px] rounded-full opacity-15"
+          className="hero-ambient-blob absolute -right-20 top-1/3 h-[500px] w-[500px] rounded-full opacity-15"
           style={{
             background: "radial-gradient(circle, #6d28d9 0%, transparent 70%)",
             filter: "blur(150px)",
@@ -30,17 +59,21 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
         />
         {/* Tertiary blue orb - bottom center */}
         <div
-          className="absolute bottom-0 left-1/3 h-[400px] w-[400px] rounded-full opacity-10"
+          className="hero-ambient-blob absolute bottom-0 left-1/3 h-[400px] w-[400px] rounded-full opacity-15"
           style={{
-            background: "radial-gradient(circle, #2563eb 0%, transparent 70%)",
+            background: "radial-gradient(circle, #0EA5E9 0%, transparent 70%)",
             filter: "blur(120px)",
           }}
         />
+
+        <div className="hero-particle hero-particle-1" />
+        <div className="hero-particle hero-particle-2" />
+        <div className="hero-particle hero-particle-3" />
       </div>
 
       {/* ── Subtle dot grid ── */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.035]"
+        className="hero-grid pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
             "radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px)",
@@ -50,7 +83,7 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
 
       {/* ── Ultra subtle texture ── */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.035]"
+        className="pointer-events-none absolute inset-0 opacity-[0.025]"
         style={{
           backgroundImage:
             "repeating-linear-gradient(45deg, rgba(255,255,255,0.22) 0px, rgba(255,255,255,0.22) 1px, transparent 1px, transparent 3px)",
@@ -63,14 +96,25 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
         {/* ── Left Column: Copy & CTAs ── */}
         <div className="relative flex flex-col items-start text-left">
           {/* Badge */}
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.05] px-4 py-1.5 backdrop-blur-sm">
+          <div className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-white/[0.12] bg-white/[0.06] px-3.5 py-1.5 backdrop-blur-sm">
+            <div className="h-5 w-5 overflow-hidden rounded-full border border-blue-400/50 shadow-[0_0_14px_rgba(59,130,246,0.3)]">
+              <Image
+                src="/placeholder-user.jpg"
+                alt="Avatar D.NF"
+                width={20}
+                height={20}
+                className="h-full w-full object-cover"
+                priority
+              />
+            </div>
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
             </span>
-            <span className="text-xs font-medium text-white/70">
-              Disponivel para novos projetos
+            <span className="text-xs font-medium text-white/80">
+              Disponível para novos projetos
             </span>
+            <span aria-hidden="true" className="hero-caret text-xs text-blue-300">|</span>
           </div>
 
           {/* Headline glow */}
@@ -78,15 +122,15 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
 
           {/* Headline */}
           <h1
-            className="relative z-10 text-balance text-4xl font-extrabold leading-[1.08] text-white sm:text-5xl lg:text-[3.8rem]"
+            className="relative z-10 max-w-[16ch] text-balance text-4xl font-extrabold leading-[1.06] text-white sm:text-5xl lg:text-[3.8rem]"
             style={{ letterSpacing: "-0.03em" }}
           >
-            Clareza operacional para decisoes que movem o seu negocio.
+            Clareza operacional para decisões que movem o seu negócio.
           </h1>
 
           {/* Sub-headline */}
-          <p className="mt-7 max-w-[560px] text-pretty text-base leading-relaxed text-white/55 sm:text-lg">
-            Dados, automacao e IA alinhados para decisao executiva com ritmo e
+          <p className="mt-8 max-w-[560px] text-pretty text-base leading-relaxed text-white/65 sm:text-lg">
+            Dados, automação e IA alinhados para decisão executiva com ritmo e
             controle.
           </p>
 
@@ -95,23 +139,20 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
             <Button
               onClick={onOpenModal}
               size="lg"
-              className="rounded-full bg-white px-8 py-6 text-sm font-semibold text-black shadow-[0_0_0_1px_rgba(255,255,255,0.8),0_0_32px_rgba(59,130,246,0.34)] hover:bg-white/95"
+              className="hero-liquid-btn hero-liquid-btn-primary rounded-full border border-white/20 px-8 py-6 text-sm font-semibold text-black"
             >
-              Solicitar Diagnostico Gratis
+              Solicitar Diagnóstico Grátis
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button
-              onClick={onOpenModal}
-              size="lg"
-              variant="ghost"
-              className="rounded-full border border-white/[0.12] bg-transparent px-7 py-6 text-sm text-white hover:bg-white/[0.06] hover:text-white"
-            >
-              Falar com Especialista
+            <Button asChild size="lg" variant="ghost" className="hero-liquid-btn hero-liquid-btn-ghost rounded-full border border-white/[0.2] px-7 py-6 text-sm text-white">
+              <a href="mailto:comercial@deividnf.com.br?subject=Contato%20-%20D.NF&body=Ol%C3%A1%2C%20quero%20falar%20sobre%20diagn%C3%B3stico%20e%20estrutura%C3%A7%C3%A3o%20de%20dados." aria-label="Falar com Especialista por e-mail">
+                Falar com Especialista
+              </a>
             </Button>
           </div>
 
           {/* Trust line */}
-          <div className="mt-8 flex items-center gap-4 text-xs text-white/35">
+          <div className="mt-8 flex items-center gap-4 text-xs text-white/45">
             <span className="flex items-center gap-1.5">
               <CheckCircle2 className="h-3.5 w-3.5" />
               Sem compromisso
@@ -127,76 +168,78 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
         <div className="relative flex items-center justify-center md:justify-end">
           <div className="grid w-full max-w-md grid-cols-2 gap-3">
             {/* Card 1 - Large, spanning full width */}
-            <div className="col-span-2 rounded-3xl border border-white/[0.14] bg-[#0B101A]/95 p-6 shadow-[0_12px_50px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
+            <div className="col-span-2 rounded-3xl border border-blue-300/[0.18] bg-[#0B1220]/95 p-6 shadow-[0_12px_50px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs font-medium uppercase tracking-wider text-white/40">
-                    Direcao Operacional
+                  <p className="text-xs font-medium uppercase tracking-wider text-white/55">
+                    Direção Operacional
                   </p>
                   <p className="mt-2 text-2xl font-semibold text-white">
-                    Visao unica para lideranca
+                    Visão única para liderança
                   </p>
-                  <p className="mt-2 text-sm text-white/55">
+                  <p className="mt-2 text-sm text-white/65">
                     Indicadores claros para orientar prioridade, risco e ritmo.
                   </p>
                 </div>
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.12] bg-white/[0.06]">
-                  <BarChart3 className="h-7 w-7 text-blue-400" />
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-300/[0.2] bg-white/[0.06]">
+                  <BarChart3 className="h-7 w-7 text-blue-300" />
                 </div>
               </div>
               {/* Mini bar chart visual */}
-              <div className="mt-5 flex items-end gap-1.5">
-                {[40, 55, 35, 70, 50, 80, 65, 90, 75, 95, 85, 98].map(
-                  (h, i) => (
-                    <div
-                      key={i}
-                      className="flex-1 rounded-sm bg-gradient-to-t from-blue-500/30 to-blue-400/60"
-                      style={{ height: `${h * 0.5}px` }}
-                    />
-                  )
-                )}
+              <div ref={chartRef} className="hero-chart mt-5 relative flex items-end gap-1.5 overflow-hidden rounded-md">
+                <span className="hero-chart-scan" aria-hidden="true" />
+                {chartBars.map((height, index) => (
+                  <div
+                    key={index}
+                    className={`hero-chart-bar ${isChartVisible ? "hero-chart-bar-visible" : ""}`}
+                    style={{
+                      height: `${height * 0.5}px`,
+                      animationDelay: `${index * 110}ms`,
+                    }}
+                  />
+                ))}
               </div>
             </div>
 
             {/* Card 2 - Bottom left */}
-            <div className="rounded-3xl border border-white/[0.14] bg-[#0B101A]/95 p-5 shadow-[0_12px_50px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.12] bg-white/[0.06]">
+            <div className="rounded-3xl border border-blue-300/[0.18] bg-[#0B1220]/95 p-5 shadow-[0_12px_50px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-300/[0.2] bg-white/[0.06]">
                 <Zap className="h-5 w-5 text-indigo-400" />
               </div>
-              <p className="mt-4 text-xl font-semibold text-white">Execucao sem friccao</p>
-              <p className="text-xs font-medium uppercase tracking-wider text-white/40">
-                Operacao mais leve
+              <p className="mt-4 text-xl font-semibold text-white">Execução sem fricção</p>
+              <p className="text-xs font-medium uppercase tracking-wider text-white/55">
+                Operação mais leve
               </p>
-              <p className="mt-2 text-xs text-white/35 leading-relaxed">
-                Automacoes reduzem retrabalho e protegem o foco do time.
+              <p className="mt-2 text-xs text-white/58 leading-relaxed">
+                Automações reduzem retrabalho e protegem o foco do time.
               </p>
             </div>
 
             {/* Card 3 - Bottom right */}
-            <div className="rounded-3xl border border-white/[0.14] bg-[#0B101A]/95 p-5 shadow-[0_12px_50px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.12] bg-white/[0.06]">
+            <div className="rounded-3xl border border-blue-300/[0.18] bg-[#0B1220]/95 p-5 shadow-[0_12px_50px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-300/[0.2] bg-white/[0.06]">
                 <TrendingUp className="h-5 w-5 text-emerald-400" />
               </div>
-              <p className="mt-4 text-xl font-semibold text-white">Decisao com contexto</p>
-              <p className="text-xs font-medium uppercase tracking-wider text-white/40">
-                Leitura de negocio
+              <p className="mt-4 text-xl font-semibold text-white">Decisão com contexto</p>
+              <p className="text-xs font-medium uppercase tracking-wider text-white/55">
+                Leitura de negócio
               </p>
-              <p className="mt-2 text-xs text-white/35 leading-relaxed">
-                Inteligencia aplicada para agir com confianca e previsibilidade.
+              <p className="mt-2 text-xs text-white/58 leading-relaxed">
+                Inteligência aplicada para agir com confiança e previsibilidade.
               </p>
             </div>
 
             {/* Card 4 - Small pill card overlay at bottom */}
-            <div className="col-span-2 flex items-center gap-3 rounded-2xl border border-white/[0.14] bg-[#0B101A]/95 px-5 py-3.5 shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.12] bg-white/[0.06]">
+            <div className="col-span-2 flex items-center gap-3 rounded-2xl border border-blue-300/[0.18] bg-[#0B1220]/95 px-5 py-3.5 shadow-[0_10px_40px_rgba(0,0,0,0.28)] backdrop-blur-2xl">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-blue-300/[0.2] bg-white/[0.06]">
                 <Clock className="h-4 w-4 text-amber-400" />
               </div>
               <div>
                 <p className="text-sm font-medium text-white">
-                  Evolucao continua orientada por dados
+                  Evolução contínua orientada por dados
                 </p>
-                <p className="text-xs text-white/40">
-                  Ajustes estrategicos e incrementais para ganho sustentavel.
+                <p className="text-xs text-white/58">
+                  Ajustes estratégicos e incrementais para ganho sustentável.
                 </p>
               </div>
             </div>
@@ -205,7 +248,7 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
       </div>
 
       {/* ── Bottom fade ── */}
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050508] to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#05070B] to-transparent" />
     </section>
   )
 }
