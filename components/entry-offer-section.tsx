@@ -35,7 +35,7 @@ export function EntryOfferSection({ onOpenModal }: EntryOfferSectionProps) {
             <Button
               onClick={onOpenModal}
               size="lg"
-              className="mt-8 bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_30px_rgba(59,130,246,0.3)] px-8 py-6 text-base"
+              className="mt-8 bg-primary text-primary-foreground shadow-[0_0_30px_rgba(59,130,246,0.3)] px-8 py-6 text-base"
             >
               Solicitar Diagnostico
               <ArrowRight className="ml-2 h-4 w-4" />

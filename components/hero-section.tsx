@@ -114,12 +114,17 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
             <Button
               onClick={onOpenModal}
               size="lg"
-              className="hero-liquid-btn hero-liquid-btn-primary rounded-full border border-slate-300 px-8 py-6 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700"
+              className="rounded-full border border-slate-500 bg-blue-600 px-8 py-6 text-sm font-semibold text-white"
             >
               Solicitar Diagnóstico Grátis
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button asChild size="lg" variant="ghost" className="hero-liquid-btn hero-liquid-btn-ghost rounded-full border border-slate-200/60 px-7 py-6 text-sm text-slate-700 hover:bg-slate-50 hover:text-slate-900">
+            <Button
+              asChild
+              size="lg"
+              variant="sweep"
+              className="rounded-full border border-slate-400 bg-white px-7 py-6 text-sm"
+            >
               <a href={specialistMailto} aria-label="Falar com Especialista por e-mail">
                 Falar com Especialista
               </a>

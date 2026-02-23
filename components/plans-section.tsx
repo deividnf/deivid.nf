@@ -99,8 +99,8 @@ export function PlansSection({ onOpenModal }: PlansSectionProps) {
                 onClick={onOpenModal}
                 className={`mt-8 w-full ${
                   plan.highlighted
-                    ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(59,130,246,0.25)]"
-                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                    ? "bg-primary text-primary-foreground shadow-[0_0_20px_rgba(59,130,246,0.25)]"
+                    : "bg-secondary text-secondary-foreground"
                 }`}
               >
                 Solicitar informações

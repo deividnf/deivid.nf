@@ -23,7 +23,7 @@ export function HeaderRedesign({ onOpenModal }: HeaderRedesignProps) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-5">
       <nav
-        className={`flex w-full max-w-6xl items-center justify-between rounded-2xl px-6 py-3 transition-all duration-500 ${
+        className={`flex w-full max-w-6xl items-center justify-between rounded-2xl px-6 py-3 ${
           scrolled
             ? "border border-neutral-200 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-md"
             : "border border-neutral-100 shadow-[0_4px_16px_rgba(0,0,0,0.04)] backdrop-blur-sm"
@@ -36,10 +36,7 @@ export function HeaderRedesign({ onOpenModal }: HeaderRedesignProps) {
 
         {/* Mini Profile Card */}
         <div className="hidden md:flex">
-          <button
-            onClick={onOpenModal}
-            className="group flex w-full max-w-fit items-center gap-3 rounded-full border border-neutral-200 bg-white px-4 py-2 transition-all duration-300 hover:border-blue-300 hover:shadow-[0_4px_16px_rgba(37,99,235,0.12)]"
-          >
+          <div className="flex w-full max-w-fit items-center gap-3 rounded-full border border-neutral-400 bg-white px-4 py-2">
             {/* Avatar */}
             <div className="relative h-9 w-9 flex-shrink-0 overflow-visible rounded-full border border-blue-300/60 shadow-[0_0_10px_rgba(37,99,235,0.12)]">
               <Image
@@ -65,17 +62,17 @@ export function HeaderRedesign({ onOpenModal }: HeaderRedesignProps) {
             </div>
 
             {/* CTA */}
-            <button className="ml-2 flex-shrink-0 rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold text-white hover:bg-blue-700 transition-colors">
-              Contato<span className="typing-dots ml-1">.</span><span className="typing-dots" style={{ animationDelay: '0.2s' }}>.</span><span className="typing-dots" style={{ animationDelay: '0.4s' }}>.</span>
+            <button onClick={onOpenModal} className="ml-2 flex-shrink-0 rounded-full bg-blue-600 px-3 py-1 text-xs font-semibold text-white">
+              Contato
             </button>
-          </button>
+          </div>
         </div>
 
         {/* Mobile CTA */}
         <div className="md:hidden">
           <Button
             onClick={onOpenModal}
-            className="rounded-full bg-blue-600 px-4 py-2 text-xs font-semibold text-white hover:bg-blue-700"
+            className="rounded-full bg-blue-600 px-4 py-2 text-xs font-semibold text-white"
           >
             Contato
           </Button>

@@ -58,7 +58,7 @@ export function LeadModal({ open, onOpenChange }: LeadModalProps) {
             </DialogHeader>
             <Button
               onClick={handleClose}
-              className="mt-2 bg-primary text-primary-foreground hover:bg-primary/90"
+              className="mt-2 bg-primary text-primary-foreground"
             >
               Fechar
             </Button>
@@ -125,7 +125,7 @@ export function LeadModal({ open, onOpenChange }: LeadModalProps) {
                   <Button
                     type="button"
                     variant="outline"
-                    className="border-border text-muted-foreground hover:bg-secondary hover:text-foreground"
+                    className="border-border text-muted-foreground"
                   >
                     Cancelar
                   </Button>
@@ -133,7 +133,7 @@ export function LeadModal({ open, onOpenChange }: LeadModalProps) {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_rgba(59,130,246,0.3)]"
+                  className="bg-primary text-primary-foreground shadow-[0_0_20px_rgba(59,130,246,0.3)]"
                 >
                   {isSubmitting ? "Enviando..." : "Enviar"}
                 </Button>

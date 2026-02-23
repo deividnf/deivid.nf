@@ -58,13 +58,13 @@ export function Header({ onOpenModal }: HeaderProps) {
           <Button
             onClick={onOpenModal}
             variant="ghost"
-            className="rounded-full border border-white/[0.12] bg-transparent px-5 text-sm text-white hover:bg-white/[0.08] hover:text-white"
+            className="rounded-full border border-white/[0.12] bg-transparent px-5 text-sm text-white"
           >
             Falar Conosco
           </Button>
           <Button
             onClick={onOpenModal}
-            className="rounded-full bg-white px-5 text-sm font-semibold text-black shadow-[0_0_24px_rgba(59,130,246,0.28)] hover:bg-white/90"
+            className="rounded-full bg-white px-5 text-sm font-semibold text-black shadow-[0_0_24px_rgba(59,130,246,0.28)]"
           >
             Diagnostico Gratis
           </Button>
@@ -109,7 +109,7 @@ export function Header({ onOpenModal }: HeaderProps) {
                 onOpenModal()
               }}
               variant="ghost"
-              className="w-full rounded-full border border-white/[0.12] bg-transparent text-sm text-white hover:bg-white/[0.08] hover:text-white"
+              className="w-full rounded-full border border-white/[0.12] bg-transparent text-sm text-white"
             >
               Falar Conosco
             </Button>
@@ -118,7 +118,7 @@ export function Header({ onOpenModal }: HeaderProps) {
                 setMobileOpen(false)
                 onOpenModal()
               }}
-              className="w-full rounded-full bg-white text-sm font-semibold text-black hover:bg-white/90"
+              className="w-full rounded-full bg-white text-sm font-semibold text-black"
             >
               Diagnostico Gratis
             </Button>
