@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Header } from "@/components/header"
+import { HeaderRedesign } from "@/components/header-redesign"
 import { HeroSection } from "@/components/hero-section"
 import { ProblemSection } from "@/components/problem-section"
 import { ValueSection } from "@/components/value-section"
@@ -24,7 +24,7 @@ export default function Page() {
 
   return (
     <>
-      <Header onOpenModal={openModal} />
+      <HeaderRedesign onOpenModal={openModal} />
       <main>
         <HeroSection onOpenModal={openModal} />
         <ProblemSection />
